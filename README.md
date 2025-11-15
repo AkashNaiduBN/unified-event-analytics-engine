@@ -60,8 +60,8 @@ Full documentation at `/api-docs`.
 
 
 ## 4. Deployment
-The application is deployed using Railway.
-Live URL: <>
+The application is deployed using Render.
+Live URL: <https://unified-event-analytics-engine-md6n.onrender.com/api-docs/>
 
 
 ## 5. Challenges Faced & Solutions
