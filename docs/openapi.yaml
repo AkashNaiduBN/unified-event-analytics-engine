@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: UEAE API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4000
+paths:
+  /api/auth/register:
+    post:
+      summary: Register application and generate API key
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                ownerEmail:
+                  type: string
+                expiresInDays:
+                  type: integer
+      responses:
+        '200':
+          description: created
+  /api/auth/api-key:
+    get:
+      summary: Get API key
+      parameters:
+        - in: query
+          name: appId
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ok
+  /api/analytics/collect:
+    post:
+      summary: Collect event
+      parameters:
+        - in: header
+          name: x-api-key
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: ok
+  /api/analytics/event-summary:
+    get:
+      summary: Event summary
+      parameters:
+        - in: query
+          name: event
+          schema:
+            type: string
+        - in: query
+          name: startDate
+          schema:
+            type: string
+        - in: query
+          name: endDate
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ok
